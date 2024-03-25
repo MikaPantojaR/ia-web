@@ -1,1 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
+@use './style/base/html/html';
+@use './style/base/typography/typography';
+@use './style/angular-material/angular-material-theme';

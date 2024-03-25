@@ -1,0 +1,5 @@
+@use '../color/color' as color;
+
+html {
+    color: color.$text-primary;
+}

@@ -1,0 +1,45 @@
+<div class="login-container">
+    <div class="login-container__logo">
+        <span class="login-container__logo--img"></span>
+    </div>
+
+    <div class="login-container__title">
+        <h2 class="login-container__title--normal">{{loginConstants.TITLE_1_VALUE}}</h2>
+
+        <h1 class="login-container__title--purple">{{loginConstants.TITLE_2_VALUE}}</h1>
+    </div>
+
+    <form class="login-container__body" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="login-container__body--input">
+            <mat-label>{{loginConstants.USERNAME_PLACEHOLDER_VALUE}}</mat-label>
+
+            <input formControlName="username" required matInput placeholder={{loginConstants.USERNAME_LABEL_VALUE}}>
+
+            <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                El nombre de usuario debe tener al menos 4 caracteres.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="login-container__body--input">
+            <mat-label>{{loginConstants.PASSWORD_PLACEHOLDER_VALUE}}</mat-label>
+
+            <input formControlName="password" required matInput [type]="hidePassword ? 'password' : 'text'"
+                   placeholder={{loginConstants.PASSWORD_LABEL_VALUE}}>
+
+            <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+
+            <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                La contraseña es requerida y debe tener al menos 4 caracteres.
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="login-container__body--button">
+            {{loginConstants.LOGIN_BUTTON_VALUE}}
+        </button>
+        <button mat-raised-button color="secondary" type="click" class="login-container__body--registry">
+            {{loginConstants.REGISTRY_BUTTON_VALUE}}
+        </button>
+    </form>
+</div>

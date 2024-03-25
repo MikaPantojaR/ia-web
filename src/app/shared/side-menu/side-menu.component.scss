@@ -1,0 +1,31 @@
+@import "../../../style/base/color/color.scss";
+
+.menu-container {
+    &__body {
+        width: 100%;
+        background-color: $primary-background;
+    }
+
+    &__side-bar {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.active {
+    background-color: $field-background-focused;
+}
+
+.mat-expansion-panel:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+    padding: 16px;
+    font-family: var(--mdc-list-list-item-label-text-font);
+    line-height: var(--mdc-list-list-item-label-text-line-height);
+    font-size: var(--mdc-list-list-item-label-text-size);
+    font-weight: var(--mdc-list-list-item-label-text-weight);
+    letter-spacing: var(--mdc-list-list-item-label-text-tracking);
+}

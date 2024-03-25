@@ -1,0 +1,30 @@
+<mat-sidenav-container class="menu-container__body">
+    <mat-sidenav mode="side" opened class="menu-container__side-bar">
+        <mat-nav-list>
+            <ng-container *ngFor="let item of menuItems">
+                <ng-container *ngIf="!item.children; else subMenu">
+                    <a mat-list-item [routerLink]="item.path" routerLinkActive="active">{{ item.title }}</a>
+                </ng-container>
+
+                <ng-template #subMenu>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <span>{{ item.title }}</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <mat-list>
+                            <a mat-list-item *ngFor="let child of item.children" [routerLink]="child.path"
+                                routerLinkActive="active">{{ child.title }}</a>
+                        </mat-list>
+                    </mat-expansion-panel>
+                </ng-template>
+            </ng-container>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="menu-container__content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

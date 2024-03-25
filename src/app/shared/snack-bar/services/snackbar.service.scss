@@ -1,0 +1,29 @@
+@import "../../../../../style/base/color/color.scss";
+
+.snackbar--info {
+    background-color: color.$info-background;
+    border: 1px solid color.$info-border;
+    border-radius: 5px;
+    --mdc-snackbar-container-color: color.$info-background;
+}
+
+.snackbar--success {
+    background-color: color.$success-background;
+    border: 1px solid color.$success-border;
+    border-radius: 5px;
+    --mdc-snackbar-container-color: color.$success-background;
+}
+
+.snackbar--warning {
+    background-color: color.$warning-background;
+    border: 1px solid color.$warning-border;
+    border-radius: 5px;
+    --mdc-snackbar-container-color: color.$warning-background;
+}
+
+.snackbar--error {
+    background-color: color.$error-background;
+    border: 1px solid color.$error-border;
+    border-radius: 5px;
+    --mdc-snackbar-container-color: color.$error-background;
+}

@@ -1,0 +1,46 @@
+@import "../../../style/base/color/color.scss";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--mat-sidenav-container-background-color);
+    border: 1px solid;
+    border-color: $other-stroke;
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__right {
+        display: flex;
+    }
+
+    &__user-info {
+        display: flex;
+        align-items: center;
+
+        &--icon {
+            margin-left: 1rem;
+            background-size: cover;
+            height: 60px;
+            width: 60px;
+        }
+
+        &--username {
+            margin-left: 1rem;
+        }
+    }
+
+    &__button {
+        &--play {
+            margin-right: 1rem;
+        }
+
+        &--signout {
+            margin-right: 1rem;
+        }
+    }
+}

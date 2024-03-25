@@ -1,0 +1,12 @@
+<div class="snack-bar" [ngClass]="'snack-bar--' + type">
+    <span matSnackBarLabel class="snack-bar__label">
+        <mat-icon class="snack-bar__icon">{{iconName}}</mat-icon>
+
+        <span>{{message}}</span>
+    </span>
+
+    <span class="snack-bar__actions" matSnackBarActions>
+        <app-icon-button class="snack-bar__actions__close" iconName="close"
+            (buttonClickChange)="close()"></app-icon-button>
+    </span>
+</div>

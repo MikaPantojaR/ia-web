@@ -1,0 +1,36 @@
+@import "../../../../style/base/color/color.scss";
+
+@mixin snack-bar-themed($text-color, $icon-color) {
+    .snack-bar {
+        &__label {
+            color: $text-color;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        &__icon {
+            color: $icon-color;
+        }
+        &__actions {
+            &__close {
+                color: $text-color;
+            }
+        }
+    }
+}
+
+.snack-bar {
+    display: flex;
+    &--success {
+        @include snack-bar-themed(color.$success-text-dark, color.$success-main);
+    }
+    &--info {
+        @include snack-bar-themed(color.$info-text-dark, color.$info-main);
+    }
+    &--warning {
+        @include snack-bar-themed(color.$warning-text-dark, color.$warning-main);
+    }
+    &--error {
+        @include snack-bar-themed(color.$error-text-dark, color.$error-main);
+    }
+}

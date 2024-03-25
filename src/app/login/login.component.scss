@@ -1,0 +1,47 @@
+@import "../../style/base/color/color.scss";
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        &--normal {
+            font-weight: bolder;
+            font-size: 46px;
+        }
+
+        &--purple {
+            color: $primary-main;
+            font-weight: bolder;
+            font-size: 46px;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0 1rem 0;
+
+        &--input {
+            margin: .5rem 0 .5rem 0;
+        }
+
+        &--checkbox {
+            margin: 1rem 0 1rem 0;
+        }
+
+        &--registry {
+            margin-top: 1rem;
+        }
+    }
+
+    &__footer {
+        margin: 2rem 0 2rem 0;
+    }
+}
