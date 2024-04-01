@@ -1,6 +1,6 @@
 export enum RegistryConstants {
     TITLE_1_VALUE = 'Bienvenido a',
-    TITLE_2_VALUE = 'IA - Interface de Control',
+    TITLE_2_VALUE = 'RETINODiAB',
 
     USERNAME_PLACEHOLDER_VALUE = 'Username',
     USERNAME_LABEL_VALUE = 'correo@example.com',
@@ -15,5 +15,6 @@ export enum RegistryConstants {
     REGISTRY_BUTTON_VALUE = 'Registrar',
 
     ROL_RADIO_VALUE = 'Rol',
-    ROL_PLACEHOLDER_VALUE = 'Rol'
+    ROL_PLACEHOLDER_VALUE = 'Rol',
+    KEEP_LOGGED_IN_VALUE = 'Diabetico',
 }

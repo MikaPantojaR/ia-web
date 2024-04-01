@@ -13,9 +13,9 @@
         <mat-form-field appearance="outline" class="login-container__body--input">
             <mat-label>{{loginConstants.USERNAME_PLACEHOLDER_VALUE}}</mat-label>
 
-            <input formControlName="username" required matInput placeholder={{loginConstants.USERNAME_LABEL_VALUE}}>
+            <input formControlName="email" required matInput placeholder={{loginConstants.USERNAME_LABEL_VALUE}}>
 
-            <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
                 El nombre de usuario debe tener al menos 4 caracteres.
             </mat-error>
         </mat-form-field>
@@ -38,7 +38,7 @@
         <button mat-raised-button color="primary" type="submit" class="login-container__body--button">
             {{loginConstants.LOGIN_BUTTON_VALUE}}
         </button>
-        <button mat-raised-button color="secondary" type="click" class="login-container__body--registry">
+        <button mat-raised-button color="secondary" type="button" (click)="goToRegistry()" class="login-container__body--registry">
             {{loginConstants.REGISTRY_BUTTON_VALUE}}
         </button>
     </form>

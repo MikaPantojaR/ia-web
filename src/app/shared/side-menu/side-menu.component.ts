@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,7 +27,18 @@ import { MenuItem } from '../models/side-menu.model';
   templateUrl: './side-menu.component.html',
   styleUrl: './side-menu.component.scss'
 })
-export class SideMenuComponent {
+export class SideMenuComponent implements OnInit {
   @Input()
   menuItems!: MenuItem[];
+
+  mostrarAdminUsuarios: boolean = true;
+
+    ngOnInit(): void {
+        const usuarioString = sessionStorage.getItem("usuario");
+        if (usuarioString !== null) {
+            const usuarioRecuperado = JSON.parse(usuarioString);
+            this.mostrarAdminUsuarios = usuarioRecuperado.rol === 'administrador';
+        }
+    }
+
 }

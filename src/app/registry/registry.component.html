@@ -13,9 +13,9 @@
         <mat-form-field appearance="outline" class="registry-container__body--input">
             <mat-label>{{registryConstants.NAME_PLACEHOLDER_VALUE}}</mat-label>
 
-            <input formControlName="name" required matInput placeholder={{registryConstants.NAME_LABEL_VALUE}}>
+            <input formControlName="nombre" required matInput placeholder={{registryConstants.NAME_LABEL_VALUE}}>
 
-            <mat-error *ngIf="registryForm.get('name')?.invalid && registryForm.get('name')?.touched">
+            <mat-error *ngIf="registryForm.get('nombre')?.invalid && registryForm.get('nombre')?.touched">
                 El nombre de paciente debe tener al menos 5 caracteres.
             </mat-error>
         </mat-form-field>
@@ -23,9 +23,9 @@
         <mat-form-field appearance="outline" class="registry-container__body--input">
             <mat-label>{{registryConstants.USERNAME_PLACEHOLDER_VALUE}}</mat-label>
 
-            <input formControlName="username" required matInput placeholder={{registryConstants.USERNAME_LABEL_VALUE}}>
+            <input formControlName="email" required matInput placeholder={{registryConstants.USERNAME_LABEL_VALUE}}>
 
-            <mat-error *ngIf="registryForm.get('username')?.invalid && registryForm.get('username')?.touched">
+            <mat-error *ngIf="registryForm.get('email')?.invalid && registryForm.get('email')?.touched">
                 El nombre de usuario debe tener al menos 4 caracteres.
             </mat-error>
         </mat-form-field>
@@ -56,11 +56,18 @@
             Seleccione un rol.
         </mat-error>
 
+        <mat-checkbox formControlName="diabetes" required color="primary" class="login-container__body--checkbox">
+            {{registryConstants.KEEP_LOGGED_IN_VALUE}}
+        </mat-checkbox>
+        <mat-error *ngIf="registryForm.get('diabetico')?.invalid">
+            Seleccione en caso de ser diabetico.
+        </mat-error>
+
 
         <button mat-raised-button color="primary" type="submit" class="registry-container__body--button">
             {{registryConstants.REGISTRY_BUTTON_VALUE}}
         </button>
-        <button mat-raised-button color="secondary" type="click" class="registry-container__body--registry">
+        <button mat-raised-button color="secondary" (click)="goToLogin()" type="button" class="registry-container__body--registry">
             {{registryConstants.LOGIN_BUTTON_VALUE}}
         </button>
     </form>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -9,6 +9,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatIconModule} from "@angular/material/icon";
 import {CommonModule} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
+import {Router} from "@angular/router";
+import {Observable, Subscription} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
     selector: 'app-login',
@@ -26,25 +29,63 @@ import {MatButtonModule} from "@angular/material/button";
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     loginForm!: FormGroup;
     loginConstants = LoginConstants;
     hidePassword: boolean = true;
+    private suscripcion: Subscription;
 
-    constructor(private formBuilder: FormBuilder) {
+    private apiUrl = "http://127.0.0.1:8000/api/v1/validate-credentials/";
+
+    constructor(
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private http: HttpClient) {
+        this.suscripcion = new Subscription();
     }
 
     onSubmit(): void {
         if (this.loginForm.valid) {
-            console.log(this.loginForm);
+            this.suscripcion = this.authenticate(this.loginForm.value).subscribe(
+                response => {
+                    sessionStorage.setItem("usuario", JSON.stringify(response))
+                    if(this.loginForm.value.rol === 'administrador') {
+                        this.router.navigate(["/admin"]);
+                    } else {
+                        this.router.navigate(["/admin/historial"])
+                    }
+                },
+                error => {
+                    console.log(error)
+                    alert('Error de login: ' + error.error.mensaje);
+                })
         }
     }
 
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
-            username: ['', [Validators.required, Validators.minLength(4)]],
+            email: ['', [Validators.required, Validators.minLength(4)]],
             password: ['', [Validators.required, Validators.minLength(4)]]
         })
     }
 
+    goToRegistry() {
+        this.router.navigate(["/registro"]);
+    }
+
+    authenticate(value: any): Observable<any> {
+        const body = new URLSearchParams();
+        body.set('email', value.email);
+        body.set('password', value.password);
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded'
+        });
+
+        return this.http.post<any>(this.apiUrl, body.toString(), {headers});
+    }
+
+    ngOnDestroy(): void {
+        this.suscripcion.unsubscribe();
+    }
 }

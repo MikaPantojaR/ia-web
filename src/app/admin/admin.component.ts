@@ -15,5 +15,4 @@ import { ADMIN_MENU_ITEMS } from '../shared/constants/menu-items.constants';
 })
 export class AdminComponent {
     menuItems: MenuItem[] = ADMIN_MENU_ITEMS;
-    username: string = 'Mikaela Pantoja';
 }

@@ -1,6 +1,6 @@
 export enum LoginConstants {
     TITLE_1_VALUE = 'Bienvenido a',
-    TITLE_2_VALUE = 'IA - Interface de Control',
+    TITLE_2_VALUE = 'RETINODiAB',
 
     USERNAME_PLACEHOLDER_VALUE = 'Username',
     USERNAME_LABEL_VALUE = 'correo@example.com',
