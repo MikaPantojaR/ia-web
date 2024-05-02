@@ -27,18 +27,9 @@ import { MenuItem } from '../models/side-menu.model';
   templateUrl: './side-menu.component.html',
   styleUrl: './side-menu.component.scss'
 })
-export class SideMenuComponent implements OnInit {
+export class SideMenuComponent {
+  
   @Input()
   menuItems!: MenuItem[];
-
-  mostrarAdminUsuarios: boolean = true;
-
-    ngOnInit(): void {
-        const usuarioString = sessionStorage.getItem("usuario");
-        if (usuarioString !== null) {
-            const usuarioRecuperado = JSON.parse(usuarioString);
-            this.mostrarAdminUsuarios = usuarioRecuperado.rol === 'administrador';
-        }
-    }
 
 }

@@ -1,1 +1,29 @@
-<p>diagnostic works!</p>
+<div class="diagnostic_container">
+  <form [formGroup]="diagnosticoForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Escoge un usuario</mat-label>
+      <mat-select formControlName="usuario" required>
+        <mat-option>--</mat-option>
+        @for (usuario of usuarios; track usuario) {
+          <mat-option [value]="usuario.email">{{usuario.email}}</mat-option>
+        }
+      </mat-select>
+      @if (diagnosticoForm.get('usuario')!.hasError('required')) {
+        <mat-error>Porfavor escoge a un usuario</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="login-container__body--input">
+      <mat-label>Observaciones</mat-label>
+      <input formControlName="observaciones" required matInput placeholder="Observaciones">
+      @if (diagnosticoForm.get('observaciones')!.hasError('required')) {
+        <mat-error>Porfavor anota tus observaciones</mat-error>
+      }
+  </mat-form-field>
+
+    <input type="file" (change)="handleImageChange($event)" accept="image/*">
+    <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image">
+    <button class="submit-button" mat-raised-button color="primary" type="submit">
+      Enviar
+  </button>
+  </form>
+</div>

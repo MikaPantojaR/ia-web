@@ -1,9 +1,15 @@
-@import "../../style/base/color/color.scss";
+@import "../../../style/base/color/color";
+.registry-tab {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
 
 .registry-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 5rem;
 
     &__title {
         display: flex;

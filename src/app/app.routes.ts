@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
-import {RegistryComponent} from "./registry/registry.component";
+import {RegistryComponent} from "./admin/registry/registry.component";
 import {AdminComponent} from "./admin/admin.component";
 import {UsersComponent} from "./admin/users/users.component";
 import {HistoryComponent} from "./admin/history/history.component";
@@ -15,7 +15,8 @@ export const routes: Routes = [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: UsersComponent },
             { path: 'diagnostico', component: DiagnosticComponent },
-            { path: 'historial', component: HistoryComponent }
+            { path: 'historial', component: HistoryComponent },
+            { path: 'registro', component: RegistryComponent }
         ]
     },
 ];

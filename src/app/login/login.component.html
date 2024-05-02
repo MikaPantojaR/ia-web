@@ -4,16 +4,15 @@
     </div>
 
     <div class="login-container__title">
-        <h2 class="login-container__title--normal">{{loginConstants.TITLE_1_VALUE}}</h2>
-
-        <h1 class="login-container__title--purple">{{loginConstants.TITLE_2_VALUE}}</h1>
+        <h2 class="login-container__title--normal">Bienvenido a</h2>
+        <h1 class="login-container__title--purple">RETINODiAB</h1>
     </div>
 
     <form class="login-container__body" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" class="login-container__body--input">
-            <mat-label>{{loginConstants.USERNAME_PLACEHOLDER_VALUE}}</mat-label>
+            <mat-label>Correo Electronico</mat-label>
 
-            <input formControlName="email" required matInput placeholder={{loginConstants.USERNAME_LABEL_VALUE}}>
+            <input formControlName="email" required matInput placeholder="correo@ejemplo.com">
 
             <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
                 El nombre de usuario debe tener al menos 4 caracteres.
@@ -21,10 +20,10 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="login-container__body--input">
-            <mat-label>{{loginConstants.PASSWORD_PLACEHOLDER_VALUE}}</mat-label>
+            <mat-label>Password</mat-label>
 
             <input formControlName="password" required matInput [type]="hidePassword ? 'password' : 'text'"
-                   placeholder={{loginConstants.PASSWORD_LABEL_VALUE}}>
+                   placeholder="*******">
 
             <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
                 <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
@@ -36,10 +35,7 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit" class="login-container__body--button">
-            {{loginConstants.LOGIN_BUTTON_VALUE}}
-        </button>
-        <button mat-raised-button color="secondary" type="button" (click)="goToRegistry()" class="login-container__body--registry">
-            {{loginConstants.REGISTRY_BUTTON_VALUE}}
+            Ingresar
         </button>
     </form>
 </div>

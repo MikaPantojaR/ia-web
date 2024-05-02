@@ -1,1 +1,98 @@
-<p>history works!</p>
+<div>
+    <ng-container *ngIf="esAdmin; then isAdmin else isPaciente"></ng-container>
+</div>
+
+<ng-template #isAdmin>
+    <mat-form-field class="input-usuarios"  appearance="outline">
+        <mat-label>Escoge un usuario</mat-label>
+        <mat-select (selectionChange)="cambioDeUsuario($event)">
+            <mat-option>Todos</mat-option>
+            @for (usuario of usuarios; track usuario) {
+            <mat-option [value]="usuario.email">{{usuario.email}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <table mat-table [dataSource]="tableData" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+            <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="observaciones">
+            <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+            <td mat-cell *matCellDef="let element">{{element.observaciones}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="resultado">
+            <th mat-header-cell *matHeaderCellDef>Resultado</th>
+            <td mat-cell *matCellDef="let element">{{element.resultado}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="imagen">
+            <th mat-header-cell *matHeaderCellDef>Imagen</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button class="button__eliminar" (click)="verImagen(element.imagen)" type="button">
+                    Ver Imagen
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+</ng-template>
+
+<ng-template #isPaciente>
+    <table mat-table [dataSource]="tableData" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+            <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="observaciones">
+            <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+            <td mat-cell *matCellDef="let element">{{element.observaciones}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="resultado">
+            <th mat-header-cell *matHeaderCellDef>Resultado</th>
+            <td mat-cell *matCellDef="let element">{{element.resultado}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="imagen">
+            <th mat-header-cell *matHeaderCellDef>Imagen</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button class="button__eliminar" (click)="verImagen(element.imagen)" type="button">
+                    Ver imagen
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+</ng-template>

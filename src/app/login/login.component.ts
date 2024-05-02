@@ -49,10 +49,12 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.suscripcion = this.authenticate(this.loginForm.value).subscribe(
                 response => {
                     sessionStorage.setItem("usuario", JSON.stringify(response))
-                    if(this.loginForm.value.rol === 'administrador') {
-                        this.router.navigate(["/admin"]);
+                    if(response.rol === 'administrador') {
+                        this.router.navigate(["/admin/diagnostico"]);
+                    } else if (response.rol === 'servicio') {
+                        this.router.navigate(["/admin/users"]);
                     } else {
-                        this.router.navigate(["/admin/historial"])
+                        this.router.navigate(["/admin/historial"]);
                     }
                 },
                 error => {
@@ -67,10 +69,6 @@ export class LoginComponent implements OnInit, OnDestroy {
             email: ['', [Validators.required, Validators.minLength(4)]],
             password: ['', [Validators.required, Validators.minLength(4)]]
         })
-    }
-
-    goToRegistry() {
-        this.router.navigate(["/registro"]);
     }
 
     authenticate(value: any): Observable<any> {

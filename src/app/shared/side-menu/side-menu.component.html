@@ -2,7 +2,7 @@
     <mat-sidenav mode="side" opened class="menu-container__side-bar">
         <mat-nav-list>
             <ng-container *ngFor="let item of menuItems">
-                <ng-container *ngIf="mostrarAdminUsuarios || item.title !== 'Usuarios'">
+                <ng-container>
                     <a mat-list-item [routerLink]="item.path" routerLinkActive="active">{{ item.title }}</a>
                 </ng-container>
             </ng-container>
