@@ -1,0 +1,14 @@
+<editor [(ngModel)]="dataModel" apiKey="abeleuw99x6nttr38injfrazfcqbgxr54zi2vorv2zemd4fx"
+    [init]="{plugins: 'lists link table code help'}">
+</editor>
+<mat-form-field appearance="outline">
+    <mat-label>Seleccione el manual</mat-label>
+    <mat-select (selectionChange)="onManualSelectionChange($event)">
+        @for (manual of manuales; track manual) {
+        <mat-option [value]="manual.value">{{manual.viewValue}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="guardarManual()" type="button" class="guardar-button">
+    Guardar
+</button>

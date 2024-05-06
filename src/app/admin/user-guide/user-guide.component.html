@@ -1,1 +1,22 @@
-<p>user-guide works!</p>
+<div>
+    <ng-container *ngIf="tipoUsuario === 'admin'; then isAdmin else 
+    tipoUsuario === 'paciente' ? isPaciente : isServicio"></ng-container>
+</div>
+
+<ng-template #isAdmin>
+    <div class="manual-user">
+        <div [innerHTML]="htmlContentAdmin"></div>
+    </div>
+</ng-template>
+
+<ng-template #isPaciente>
+    <div class="manual-user">
+        <div [innerHTML]="htmlContentAdmin"></div>
+    </div>
+</ng-template>
+
+<ng-template #isServicio>
+    <div class="manual-user">
+        <div [innerHTML]="htmlContentAdmin"></div>
+    </div>
+</ng-template>
